@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 import ResturantMenu from "./components/ResturantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store"
+import store from "./utils/store"
 
 const Grocery = lazy(()=> import("./components/Grocery"))
 

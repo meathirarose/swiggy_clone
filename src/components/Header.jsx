@@ -1,9 +1,12 @@
 import { LOGO_LINK } from "../utils/constants";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Header = () => {
     let [btnName, setBtnName] = useState("Login");
+
+    const cartItems = useSelector((store) => store.cart.items);
 
     return (
         <div className="flex justify-between shadow-lg bg-pink-200">
@@ -16,7 +19,7 @@ const Header = () => {
                     <li className="px-4"><Link to={"/about"} className="">About Us</Link></li>
                     <li className="px-4"><Link to={"/contact"} className="">Contact Us</Link></li>
                     <li className="px-4"><Link to={"/grocery"} className="">Grocery</Link></li>
-                    <li className="px-4"><Link to={"/cart"} className="">Cart</Link></li>
+                    <li className="px-4"><Link to={"/cart"} className="">Cart({cartItems.length})</Link></li>
                     <button className="login-btn" onClick={()=> {
                         btnName === "Login"? setBtnName("Logout"):setBtnName("Login");
                     }} >{btnName}</button>

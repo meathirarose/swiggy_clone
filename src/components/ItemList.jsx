@@ -1,8 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 const ItemList = ({items}) => {
     console.log(items);
-    
+
+    const dispatch = useDispatch();
+    const handleAddItem = (item) => {
+      dispatch(addItem(item))
+    }
+
   return (
     <div>
       {items.map(item => 
@@ -18,7 +25,11 @@ const ItemList = ({items}) => {
               </p>
           </div>
           <div>
-            <button className="shadow-md bg-gray-100 text-green-700 px-8 py-2 mx-3 rounded-md font-bold">ADD</button>
+            <button className="shadow-md bg-gray-100 text-green-700 px-8 py-2 mx-3 rounded-md font-bold"
+              onClick={() =>handleAddItem(item)}
+            >
+              ADD
+            </button>
           </div>
           </div>
         <hr />
