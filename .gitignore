@@ -1,0 +1,7 @@
+
+# for removing node modules
+node_modules
+
+#for parcel bundle
+.parcel-cache
+dist
