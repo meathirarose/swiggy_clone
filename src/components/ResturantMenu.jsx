@@ -11,6 +11,8 @@ const ResturantMenu = () => {
 
     const resInfo = useResturantMenu(resId);
 
+    const [showIndex, setShowIndex] = useState(null);
+
     if (resInfo === null) 
         return <Shimmer />;
 
@@ -26,7 +28,13 @@ const ResturantMenu = () => {
       <h1 className='font-extrabold my-8 text-2xl'>{name}</h1>
       <h5 className='font-semibold text-lg'>{cuisines.join(",")} - {costForTwoMessage}</h5>
       <h2 className='font-bold my-4'>---MENU---</h2>
-      {categories.map((category) =>(<ResturantCategory cateData={category?.card?.card} />))}
+      {categories.map((category, index) =>(
+        <ResturantCategory 
+          key={category?.card?.card?.title}
+          cateData={category?.card?.card} 
+          showItems={index === showIndex? true: false}
+          setShowIndex={()=>setShowIndex(index)}
+        />))}
     </div>
   )
 }
